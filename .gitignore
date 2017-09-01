@@ -1,4 +1,5 @@
 screen.*
-.idea
+.idea/
 *.iml
 *.log
+__pycache__/
