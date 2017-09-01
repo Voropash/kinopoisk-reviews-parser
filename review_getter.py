@@ -38,7 +38,7 @@ def parse_one_review(driver, conn):
     review_text = review_text.replace("&nbsp;", " ") \
         .replace("<br>", "\n")
 
-    # For markDown support
+    # TODO: For markDown support
     # .replace("<b>", "**") \
     # .replace("</b>", "**") \
     # .replace("<i>", "__") \
