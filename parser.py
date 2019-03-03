@@ -24,19 +24,16 @@ def init(argv):
     random.seed()
     driver = webdriver.Chrome('chromedriver.exe')
     # driver = webdriver.PhantomJS('phantomjs.exe')
-    conn = psycopg2.connect("dbname=kp user=kp password=kp port=5433")
 
-    parse(conn, driver, iterations, sleep_period_s)
-
+    parse(driver, iterations, sleep_period_s)
     driver.quit()
-    conn.close()
 
 
-def parse(conn, driver, iterations, sleep_period_s):
+def parse(driver, iterations, sleep_period_s):
     for x in range(0, iterations):
         try:
             print("Start getting " + str(x + 1) + " review")
-            parse_one_review(driver, conn)
+            parse_one_review(driver)
             print("Successful parsing")
             time.sleep(sleep_period_s)
         except Exception:

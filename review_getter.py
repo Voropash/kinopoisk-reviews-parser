@@ -9,13 +9,23 @@ import requests
 from db_saver import save
 
 
-def parse_one_review(driver, conn):
+def parse_one_review(driver):
     driver.get("https://www.kinopoisk.ru/chance/")
     big_button = driver.find_element_by_class_name("button")
+    time.sleep(0.3)
     big_button.click()
-    time.sleep(0.5)
-    file_name = driver.find_element_by_class_name("filmName")
-    link_to_film = file_name.find_element_by_tag_name("a")
+    for x in range(0, 30):
+        try:
+            file_name = driver.find_element_by_class_name("filmName")
+        except Exception:
+            time.sleep(0.3)
+
+    for x in range(0, 30):
+        try:
+            link_to_film = file_name.find_element_by_tag_name("a")
+        except Exception:
+            time.sleep(0.3)
+
     link_to_film.click()
     print("Movie link:" + driver.current_url)
 
@@ -98,4 +108,4 @@ def parse_one_review(driver, conn):
         actor_list,
         alternative_headline)
 
-    save(conn, review_item)
+    save(review_item)

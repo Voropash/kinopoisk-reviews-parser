@@ -5,7 +5,7 @@ import psycopg2
 
 
 def createPgTable():
-    conn = psycopg2.connect("dbname=kp user=kp password=kp")
+    conn = psycopg2.connect("dbname=kp user=kp password=kp port=5434")
     cur = conn.cursor()
     cur.execute(
         "CREATE TABLE reviews (id serial PRIMARY KEY, reviewText varchar, author varchar, reviewdate varchar, imageLink varchar, imageBase64 bytea, filmName varchar, infos varchar, kpRating varchar, kpRatingCount varchar, imdbRating varchar, actorList varchar, alternativeHeadline varchar);")
